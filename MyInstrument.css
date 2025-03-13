@@ -10,8 +10,8 @@
 
 .synthetic-vision {
   position: absolute;
-  left: -15%;
-  top: -23%;
-  width: 120%;
-  height: 120%;
+  left: 0px;
+  top: 0px;
+  width: 800px;
+  height: 800px;
 }

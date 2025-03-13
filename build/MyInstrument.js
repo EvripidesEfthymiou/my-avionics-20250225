@@ -21522,10 +21522,9 @@
             // }
             super(...arguments);
             this.containerRef = FSComponent.createRef();
+            this.float64Array = new Float64Array([800, 800]);
+            this.resolution = Subject.create(this.float64Array);
         }
-        // private float64Array:Float64Array[2] = [100, 200];
-        //   // float64Array[0] = 100;
-        //   // float64Array[1] = 200;
         createSVTEarthColors() {
             return BingComponent.createEarthColorsArray('#000049', [
                 {
@@ -21568,10 +21567,7 @@
         }
         render() {
             return (FSComponent.buildComponent("div", { class: "synthetic-vision", ref: this.containerRef },
-                FSComponent.buildComponent(SynVisComponent, { bingId: this.props.bingId, resolution: this.props.resolution, 
-                    // bingId={"145"}
-                    // resolution={this.props.resolution}
-                    earthColors: ArraySubject.create(this.createSVTEarthColors()), skyColor: Subject.create(BingComponent.hexaToRGBColor('0033E6')) })));
+                FSComponent.buildComponent(SynVisComponent, { bingId: "EEE145", resolution: this.resolution, earthColors: ArraySubject.create(this.createSVTEarthColors()), skyColor: Subject.create(BingComponent.hexaToRGBColor('0033E6')) })));
         }
     }
 

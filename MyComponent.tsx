@@ -1,4 +1,4 @@
-import { FSComponent, DisplayComponent, VNode, MapSystemBuilder, ComponentProps, MapComponentProps, SynVisProps, Subscribable, SynVisComponent, BingComponent, Subject, ArraySubject } from '@microsoft/msfs-sdk';
+import { FSComponent, DisplayComponent, VNode, MapSystemBuilder, ComponentProps, MapComponentProps, SynVisProps, Subscribable, SynVisComponent, BingComponent, Subject, ArraySubject, ReadonlyFloat64Array } from '@microsoft/msfs-sdk';
 import './MyInstrument.css';
 
 interface MyComponentProps extends ComponentProps {
@@ -16,7 +16,10 @@ export class MyComponent extends DisplayComponent<any> {
   // }
 
   private containerRef = FSComponent.createRef<HTMLDivElement>();
-  
+
+  private float64Array = new Float64Array([800, 800]);
+  private resolution = Subject.create<ReadonlyFloat64Array>(this.float64Array);
+
   private createSVTEarthColors(): number[] {
     return BingComponent.createEarthColorsArray('#000049', [
       {
@@ -62,10 +65,8 @@ export class MyComponent extends DisplayComponent<any> {
     return (
       <div class="synthetic-vision" ref={this.containerRef}>
         <SynVisComponent
-          bingId={this.props.bingId}
-          resolution={this.props.resolution}
-          // bingId={"145"}
-          // resolution={this.props.resolution}
+          bingId={"EEE145"}
+          resolution={this.resolution}
           earthColors={ArraySubject.create(this.createSVTEarthColors())}
           skyColor={Subject.create(BingComponent.hexaToRGBColor('0033E6'))}
         />
