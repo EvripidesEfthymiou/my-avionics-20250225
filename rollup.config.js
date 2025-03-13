@@ -6,7 +6,7 @@ export default {
   input: 'MyInstrument.tsx',
   output: {
     dir: 'build',
-    format: 'es'
+    format: 'iife'
   },
   plugins: [css({ output: 'MyInstrument.css' }), resolve(), typescript()]
 }
